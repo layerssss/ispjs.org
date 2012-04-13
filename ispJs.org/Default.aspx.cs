@@ -12,7 +12,7 @@ namespace ispJs.org
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            Response.Redirect("Ciao."+PolyglotServerPages.WebApplication.Preference);
+            Response.Redirect("Overview." + PolyglotServerPages.WebApplication.Preference);
         }
     }
 }

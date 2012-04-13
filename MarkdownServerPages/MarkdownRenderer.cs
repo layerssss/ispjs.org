@@ -56,8 +56,8 @@ namespace MarkdownServerPages
 
             }
             MarkdownDeep.Markdown m = new MarkdownDeep.Markdown();
+            m.AutoHeadingIDs = true;
             Dictionary<string, MarkdownDeep.LinkDefinition> links;
-
             var results = m.Transform(content,out links);
             locals["content"] = results;
             locals["links"] = links;

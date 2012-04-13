@@ -51,14 +51,6 @@ namespace ispJs.org
                         PolyglotServerPages.WebApplication.Preference = "en";
                     }
                 });
-            ispJs.WebApplication.RegisterRenderer("NiHao.isp.js", new LangRenderer("zh"));
-            ispJs.WebApplication.RegisterRenderer("Hello.isp.js", new LangRenderer("en"));
-            ispJs.WebApplication.RegisterRenderer("Saluton.isp.js", new LangRenderer("eo"));
-
-
-            ispJs.WebApplication.RegisterRenderer("CV.zh.isp.js", new LangRenderer("zh"));
-            ispJs.WebApplication.RegisterRenderer("CV.en.isp.js", new LangRenderer("en"));
-            ispJs.WebApplication.RegisterRenderer("CV.eo.isp.js", new LangRenderer("eo"));
             ispJs.WebApplication.HandleStart(Server);
         }
 

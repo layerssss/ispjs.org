@@ -10,7 +10,7 @@ var misc = $load('inc/misc.inc.js')();
 <title>
 <!--*/
 if (typeof (arguments[0].title) != 'undefined') { $((arguments[0].title ? arguments[0].title : '无标题页面') + '-'); } /*-->
-        尹志翔</title>
+        ISP.js</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -45,20 +45,16 @@ if (typeof (arguments[0].head) == 'function') { arguments[0].head(); } /*-->
             <div class="container">
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
                     class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-                </a><a class="brand" href="/">尹志翔</a>
+                </a><a class="brand" href="/">ISP.js</a>
                 <div class="nav-collapse">
                     <ul class="nav">
-                        <li class="{$misc.getClassNav('')$}"><a href="/Ciao.{$lang$}">关于 &amp; 开放项目</a></li>
-                        <li class="divider-vertical"></li>
-                        <li class="{$misc.getClassNav('Journal')$}"><a href="/Journals.{$lang$}">游记</a></li>
-                        <li class="divider-vertical"></li>
-                        <li class="{$misc.getClassNav('CV')$}"><a href="/CV.{$lang$}">简历</a></li>
-                        <li class="divider-vertical"></li>
-                        <li><a href="#" onclick="return false;">我还在：</a></li>
-                        <li><a href="https://github.com/layerssss/" target="_blank">Github上</a></li>
-                        <li><a href="https://www.facebook.com/zhixiang.yin" target="_blank">Facebook上</a></li>
-                        <li><a href="https://plus.google.com/u/0/photos/108058134179218385830/albums" target="_blank">
-                            Picasa上</a></li>
+                        <li class="{$misc.getClassNav('Overview')$}"><a href="/Overview.{$lang$}">介绍</a></li>
+                        <li class="{$misc.getClassNav('GetStarted')$}"><a href="/GetStarted.{$lang$}">上手指南</a></li>
+                        <li class="{$misc.getClassNav('Examples')$}"><a href="/Examples.{$lang$}">示例</a></li>
+                        <li class="{$misc.getClassNav('Docs')$}"><a href="/Docs.{$lang$}">文档</a></li>
+                        <li class="{$misc.getClassNav('Download')$}"><a href="/Download.{$lang$}">下载</a></li>
+                        <li class="{$misc.getClassNav('Source')$}"><a href="/Source.{$lang$}">源代码</a></li>
+                        
                     </ul>
                     <ul class="nav" style="float: right;">
                         <li class="{$misc.getClassLang(lang,'en',langs)$}"><a title="英语" href="{$misc.getHrefLang('en')$}">
@@ -78,12 +74,13 @@ if (typeof (arguments[0].head) == 'function') { arguments[0].head(); } /*-->
 arguments[0].body(); /*-->
         <hr>
         <footer>
-        <p>&copy; 尹志翔 2012 由<a href="http://twitter.github.com/bootstrap/" target="_blank">Bootstrap</a>、
+        <p>&copy; ispjs.org 2012 由<a href="http://twitter.github.com/bootstrap/" target="_blank">Bootstrap</a>、
         <a href="https://github.com/layerssss/ispJs" target="_blank">ISP.js</a>强力驱动
         </p>
       </footer>
     </div>
     <!-- /container -->
+    <a id="github" href="https://github.com/layerssss/ispjs" style="position:fixed;top:0px;left:0;z-index:10000;"><img src="https://a248.e.akamai.net/assets.github.com/img/5d21241b64dc708fcbb701f68f72f41e9f1fadd6/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub"></a>
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
