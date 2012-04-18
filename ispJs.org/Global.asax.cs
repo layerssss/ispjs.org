@@ -34,9 +34,11 @@ namespace ispJs.org
                 new MarkdownServerPages.MarkdownRenderer(Server.MapPath("/") + "{0}.zh.md")
                 {
                     Load = load,
-                    Read = (subPage, file) =>
+                    Read = (subPage, file, found) =>
                     {
                         PolyglotServerPages.WebApplication.Preference = "zh";
+                        ispJs.WebApplication.Response.AddHeader("Content-Language", "zh-cn");
+                        thread404Status[System.Threading.Thread.CurrentThread.ManagedThreadId] = found;
                     }
                 });
 
@@ -46,9 +48,11 @@ namespace ispJs.org
                 new MarkdownServerPages.MarkdownRenderer(Server.MapPath("/") + "{0}.en.md")
                 {
                     Load = load,
-                    Read = (subPage, file) =>
+                    Read = (subPage, file, found) =>
                     {
                         PolyglotServerPages.WebApplication.Preference = "en";
+                        ispJs.WebApplication.Response.AddHeader("Content-Language", "en");
+                        thread404Status[System.Threading.Thread.CurrentThread.ManagedThreadId] = found;
                     }
                 });
             ispJs.WebApplication.HandleStart(Server);
@@ -56,12 +60,16 @@ namespace ispJs.org
 
         protected void Session_Start(object sender, EventArgs e)
         {
-
+            
         }
-
+        static Dictionary<int, bool> thread404Status = new Dictionary<int, bool>();
         protected void Application_PreSendRequestHeaders(object sender, EventArgs e)
         {
-
+            if (!thread404Status[System.Threading.Thread.CurrentThread.ManagedThreadId])
+            {
+                thread404Status[System.Threading.Thread.CurrentThread.ManagedThreadId] = true;
+                Response.StatusCode = 404;
+            }
             var path = Request.Path;
             var exts = new[] { "js", "css", "jpeg", "jpg", "gif", "png", "swf", "pdf" };
             var ext = "";

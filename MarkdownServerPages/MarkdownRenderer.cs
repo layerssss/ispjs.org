@@ -33,13 +33,15 @@ namespace MarkdownServerPages
             }
             if (this.Read != null)
             {
-                this.Read(subPage, this.file);
+                this.Read(subPage, this.file,
+                    System.IO.File.Exists(string.Format(file, this.PathTransforming(subPage))));
             }
         }
 
         #endregion
+        public Func<string, string> PathTransforming = (str1) => str1;
         public Action<Dictionary<string, object>, string> Load;
-        public Action<string, string> Read;
+        public Action<string, string,bool> Read;
         #region IISPRenderer 成员
 
         public void Page_Load(Dictionary<string, object> locals)
@@ -47,10 +49,10 @@ namespace MarkdownServerPages
             string content, title;
             try
             {
-                content = System.IO.File.ReadAllText(string.Format(file, locals["$subPage"] as string), System.Text.Encoding.UTF8);
+                content = System.IO.File.ReadAllText(string.Format(file,this.PathTransforming(locals["$subPage"] as string)), System.Text.Encoding.UTF8);
 
             }
-            catch (System.IO.FileNotFoundException)
+            catch (System.IO.IOException)
             {
                 content = System.IO.File.ReadAllText(string.Format(file, "404"), System.Text.Encoding.UTF8);
 
