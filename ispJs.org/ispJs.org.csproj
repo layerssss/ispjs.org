@@ -123,6 +123,7 @@
     <None Include="404.zh.md" />
     <None Include="GetStarted.en.md" />
     <None Include="Overview.en.md" />
+    <None Include="Overview.zh.md" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
