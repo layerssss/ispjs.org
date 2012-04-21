@@ -20,7 +20,7 @@ namespace MarkdownServerPages
 
         public void Page_Read(string subPage)
         {
-            var d = System.IO.File.GetLastWriteTime(string.Format(file, subPage));
+            var d = System.IO.File.GetLastWriteTime(string.Format(file, this.PathTransforming(subPage)));
             if (d > version)
             {
                 var path = ispJs.WebApplication.Request.Path.Substring(1);
