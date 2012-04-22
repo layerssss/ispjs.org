@@ -41,7 +41,7 @@ namespace MarkdownServerPages
         #endregion
         public Func<string, string> PathTransforming = (str1) => str1;
         public Action<Dictionary<string, object>, string> Load;
-        public Action<string, string,bool> Read;
+        public Action<string, string, bool> Read;
         #region IISPRenderer 成员
 
         public void Page_Load(Dictionary<string, object> locals)
@@ -49,7 +49,7 @@ namespace MarkdownServerPages
             string content, title;
             try
             {
-                content = System.IO.File.ReadAllText(string.Format(file,this.PathTransforming(locals["$subPage"] as string)), System.Text.Encoding.UTF8);
+                content = System.IO.File.ReadAllText(string.Format(file, this.PathTransforming(locals["$subPage"] as string)), System.Text.Encoding.UTF8);
 
             }
             catch (System.IO.IOException)
@@ -60,8 +60,7 @@ namespace MarkdownServerPages
             MarkdownDeep.Markdown m = new MarkdownDeep.Markdown();
             m.AutoHeadingIDs = true;
             Dictionary<string, MarkdownDeep.LinkDefinition> links;
-            var results = m.Transform(content,out links);
-            locals["content"] = results;
+            var results = m.Transform(content, out links);
             locals["links"] = links;
             try
             {
@@ -73,6 +72,46 @@ namespace MarkdownServerPages
                 title = null;
             }
             locals["title"] = title;
+            if (title != null)
+            {
+                results = results.Replace("<h1>" + title + "</h1>", "");
+            }
+
+            var chapters = new List<string>();
+            try
+            {
+                var sb = new StringBuilder();
+                var i=0;
+                while (true)
+                {
+                    var j = results.IndexOf("<h2>", i);
+                    if (j == -1)
+                    {
+                        break;
+                    }
+                    sb.Append(results.Substring(i, j - i + 3));
+                    sb.Append(" id=\"chapter");
+                    sb.Append(chapters.Count);
+                    sb.Append("\">");
+                    j += 4;
+                    i = j;
+                    j = results.IndexOf("</h2>", i);
+                    var t = results.Substring(i, j - i);
+                    sb.Append(t);
+                    chapters.Add(t);
+                    sb.Append("</h2>");
+                    j += 5;
+                    i = j;
+                }
+                sb.Append(results.Substring(i));
+                results = sb.ToString();
+            }
+            catch (Exception ex)
+            {
+                chapters.Add(ex.Message);
+            }
+            locals["chapters"] = chapters;
+            locals["content"] = results;
             locals["version"] = VersionFormat == null ? version.ToString() : version.ToString(VersionFormat);
             if (this.Load != null)
             {

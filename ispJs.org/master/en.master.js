@@ -1,4 +1,3 @@
-/// <reference path="/ISPReferences/master/en.master.js" />
 /*<!--*/
 var lang = 'en';
 var langs = typeof (arguments[0].langs) == 'undefined' ? null : arguments[0].langs;
@@ -38,7 +37,7 @@ if (typeof (arguments[0].title) != 'undefined' && arguments[0].title) { $((argum
     <!--*/
 if (typeof (arguments[0].head) == 'function') { arguments[0].head(); } /*-->
 </head>
-<body>
+<body data-spy="scroll" data-target=".toc">
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">

@@ -1,4 +1,3 @@
-/// <reference path="/ISPReferences/master/zh.master.js" />
 /*<!--*/
 var lang = 'zh';
 var langs = typeof (arguments[0].langs) == 'undefined' ? null : arguments[0].langs;
@@ -34,12 +33,11 @@ if (typeof (arguments[0].title) != 'undefined') { $((arguments[0].title ? argume
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
     <script src="/js/jquery-1.7.1.min.js" type="text/javascript"></script>
     <script src="/js/fancyBox/jquery.fancybox.pack.js" type="text/javascript"></script>
-    <script src="/js/heavyScroll.js" type="text/javascript"></script>
     <link href="/js/fancyBox/jquery.fancybox.css" rel="stylesheet" type="text/css" />
     <!--*/
 if (typeof (arguments[0].head) == 'function') { arguments[0].head(); } /*-->
 </head>
-<body>
+<body data-spy="scroll" data-target=".toc">
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container">
