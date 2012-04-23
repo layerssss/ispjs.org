@@ -12,8 +12,7 @@ $(function () {
     });
     $(window).scroll(function () {
         if ($('.visible-phone').css('display') == 'none') {
-            var lt60px = $('html').scrollTop() < 60;
-            $('.navmenu').css({ 'position': lt60px ? 'absolute' : 'fixed', top: lt60px ? 60 : 0 });
+            $('.navmenu').css({ 'position': 'fixed', top: 60 });
         }
     });
     window.onresize = function () {
