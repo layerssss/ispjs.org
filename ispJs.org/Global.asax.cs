@@ -19,16 +19,37 @@ namespace ispJs.org
             Action<Dictionary<string, object>, string> load = (locals, file) =>
             {
                 var dic = new Dictionary<string, string>();
+                var subPage = (locals["$subPage"] as string);
                 foreach (var key in PolyglotServerPages.WebApplication.Languages)
                 {
                     if (System.IO.File.Exists(ispJs.WebApplication.Server.MapPath('/' +
-                        (locals["$subPage"] as string) + '.' + key + ".md"
+                         subPage.Replace('-', '/') + '.' + key + ".md"
                     )))
                     {
                         dic[key] = "true";
                     }
                 }
                 locals["langs"] = dic;
+                var breadcrumb = new Dictionary<string, string>();
+                try
+                {
+                    var i = subPage.IndexOf('-', 0);
+                    while (i != -1)
+                    {
+
+                        breadcrumb.Add(System.IO.File.ReadAllLines(
+                            string.Format(file
+                            , subPage.Remove(i).Replace('-', ispJs.Utility.PathSymbol)))[0].Trim(),
+                            subPage.Remove(i));
+                        i = subPage.IndexOf('-', i + 1);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    breadcrumb.Add("错误", ex.Message);
+                }
+                locals["breadcrumb"] = breadcrumb;
             };
             ispJs.WebApplication.RegisterRenderer("zh.isp.js",
                 new MarkdownServerPages.MarkdownRenderer(Server.MapPath("/") + "{0}.zh.md")

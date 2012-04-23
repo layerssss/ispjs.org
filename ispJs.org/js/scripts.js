@@ -10,5 +10,25 @@ $(function () {
             }
         }
     });
-    //$('body').heavyScroll();
+    $(window).scroll(function () {
+        if ($('.visible-phone').css('display') == 'none') {
+            var lt60px = $('html').scrollTop() < 60;
+            $('.navmenu').css({ 'position': lt60px ? 'absolute' : 'fixed', top: lt60px ? 60 : 0 });
+        }
+    });
+    window.onresize = function () {
+        if ($('.visible-phone').css('display') == 'none') {
+            $('.navmenu').css({
+                'position': 'fixed',
+                top: 60,
+                right: $(document).width() - ($('#main>.container').offset().left + $('#main>.container').width())
+            });
+        } else {
+            $('.navmenu').css({
+                'position': 'static'
+            });
+        }
+        $(window).trigger('scroll');
+    };
+    window.onresize();
 });
