@@ -38,7 +38,7 @@ $load('master/en.master.js')({
             {$title$}</h1>
         <hr />
         {$content$}</div>
-    <div>
+    <div class="span8">
         <div id="disqus_thread">
         </div>
         <script type="text/javascript">

@@ -21,7 +21,7 @@ $(function () {
             $('.navmenu').css({
                 'position': 'fixed',
                 top: 60,
-                right: $(document).width() - ($('#main>.container').offset().left + $('#main>.container').width())
+                right: $(document).width() - ($('body>.container').offset().left + $('body>.container').width())
             });
         } else {
             $('.navmenu').css({
