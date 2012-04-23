@@ -123,6 +123,7 @@
     <None Include="404.en.md" />
     <None Include="404.zh.md" />
     <None Include="GetStarted.en.md" />
+    <None Include="GetStarted\IIS.en.md" />
     <None Include="Overview.en.md" />
     <None Include="Overview.zh.md" />
   </ItemGroup>

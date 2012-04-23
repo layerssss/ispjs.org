@@ -1,7 +1,7 @@
 ﻿Overview  
 ==========================
 
-ISP.js is an MVC web framework written by C#. It's trying to:
+ISP.js is a project under developing. It's an MVC framework? a page engine? a web framework? jesus, I don't konw. But anyway,  it's trying to:
 
 *  Cache rendering results for mutiple request.  
 *  Let front-end developers write viewer in MVC with Javascript.  
