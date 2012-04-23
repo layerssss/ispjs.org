@@ -12,7 +12,12 @@ $(function () {
     });
     $(window).scroll(function () {
         if ($('.visible-phone').css('display') == 'none') {
-            $('.navmenu').css({ 'position': 'fixed', top: 60 });
+            if ($('.btn-navbar').css('display') == 'none') {
+                $('.navmenu').css({ 'position': 'fixed', top: 60 });
+            } else {
+                var lt60px = $('html').scrollTop() < 60;
+                $('.navmenu').css({ 'position': lt60px ? 'absolute' : 'fixed', top: lt60px ? 60 : 0 });
+            }
         }
     });
     window.onresize = function () {
