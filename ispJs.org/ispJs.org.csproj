@@ -61,6 +61,7 @@
     <Content Include="Global.asax" />
     <Content Include="img\en.jpg" />
     <Content Include="img\eo.jpg" />
+    <Content Include="img\fork.gif" />
     <Content Include="img\glyphicons-halflings-white.png" />
     <Content Include="img\glyphicons-halflings.png" />
     <Content Include="img\zh.jpg" />
