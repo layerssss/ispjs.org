@@ -60,7 +60,8 @@ namespace ispJs.org
                         PolyglotServerPages.WebApplication.Preference = "zh";
                         ispJs.WebApplication.Response.AddHeader("Content-Language", "zh-cn");
                         thread404Status[System.Threading.Thread.CurrentThread.ManagedThreadId] = found;
-                    }
+                    },
+                    PathTransforming = (path) => path.Replace('-', ispJs.Utility.PathSymbol)
                 });
 
 
@@ -74,7 +75,8 @@ namespace ispJs.org
                         PolyglotServerPages.WebApplication.Preference = "en";
                         ispJs.WebApplication.Response.AddHeader("Content-Language", "en");
                         thread404Status[System.Threading.Thread.CurrentThread.ManagedThreadId] = found;
-                    }
+                    },
+                    PathTransforming = (path) => path.Replace('-', ispJs.Utility.PathSymbol)
                 });
             ispJs.WebApplication.HandleStart(Server);
         }
