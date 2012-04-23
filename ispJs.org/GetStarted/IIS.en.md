@@ -9,15 +9,15 @@
 
 ##Compiling the Source
 
-This project should be delivered with its VisualStudio/MonoDeveloper solution file(ispJs.sln). Open and compile them using your IDE. 
+This project should be delivered with its VisualStudio/MonoDeveloper solution file(ispJs.sln). Open and compile it using your IDE. 
 
 ###About Configuration(Debug/Release)
 
 Lots of .NET source code are not caring about the configuration. But ISPjs's behaviours on different configurations varies a lot. So you need to be ware of which configuration you are using now, and you should not use Debug configuration in production environment.  
 
-The best practice is to compile both configurations at first. You should have:  
+See the complete list of differences between the two configurations [here](Docs-Configurations.en)  
 
-* Debug configuration at bin\Debug\ispJs.dll
-* Release configuration at bin\ispJs.dll
+##Reference the Binary DLL to Your Project  
 
-Make sure you have them both and then you can go on :)  
+ispJs.dll is a managed DLL. Add it to your reference list.  
+
